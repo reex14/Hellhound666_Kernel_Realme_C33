@@ -195,7 +195,7 @@ static int binder_update_page_range(struct binder_alloc *alloc, int allocate,
 	if (end <= start)
 		return 0;
 
-	trace_binder_update_page_range(alloc, allocate, start, end);
+	trace_binder_update_page_range(alloc, allocate, (unsigned long)start, (unsigned long)end);
 
 	if (allocate == 0)
 		goto free_range;
