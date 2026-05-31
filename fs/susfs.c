@@ -1110,7 +1110,8 @@ out_copy_to_user:
 #endif // #ifdef CONFIG_KSU_SUSFS_SUS_MAP
 
 /* susfs avc log spoofing */
-extern bool susfs_is_avc_log_spoofing_enabled;
+bool susfs_is_avc_log_spoofing_enabled = false;
+EXPORT_SYMBOL(susfs_is_avc_log_spoofing_enabled);
 
 void susfs_set_avc_log_spoofing(void __user **user_info) {
 	struct st_susfs_avc_log_spoofing info = {0};
@@ -1433,3 +1434,6 @@ void susfs_init(void) {
 /* No module exit is needed becuase it should never be a loadable kernel module */
 //void __init susfs_exit(void)
 
+
+struct work_struct susfs_extra_works;
+EXPORT_SYMBOL(susfs_extra_works);

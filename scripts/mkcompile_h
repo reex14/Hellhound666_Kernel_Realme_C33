@@ -41,12 +41,12 @@ else
 	TIMESTAMP=$KBUILD_BUILD_TIMESTAMP
 fi
 if test -z "$KBUILD_BUILD_USER"; then
-	LINUX_COMPILE_BY=maxsteeel
+	LINUX_COMPILE_BY=Rean
 else
-	LINUX_COMPILE_BY=$KBUILD_BUILD_USER
+	LINUX_COMPILE_BY=Rean
 fi
 if test -z "$KBUILD_BUILD_HOST"; then
-	LINUX_COMPILE_HOST=`Github`
+	LINUX_COMPILE_HOST=Hellhound666
 else
 	LINUX_COMPILE_HOST=$KBUILD_BUILD_HOST
 fi
@@ -86,7 +86,7 @@ UTS_VERSION="$(echo $UTS_VERSION $CONFIG_FLAGS $TIMESTAMP | cut -b -$UTS_LEN)"
   LD_VERSION=$($LD -v | head -n1 | sed 's/(compatible with [^)]*)//' \
 		      | sed 's/[[:space:]]*$//')
   if [ -z "$KBUILD_COMPILER_STRING" ]; then
-    printf '#define LINUX_COMPILER "%s"\n' "$CC_VERSION, $LD_VERSION, $remote, $domain, $branch, $commit"
+    printf '#define LINUX_COMPILER "%s"\n' "Hellhound666 Kernel"
   else
     printf '#define LINUX_COMPILER "%s"\n' "$KBUILD_COMPILER_STRING"
   fi;

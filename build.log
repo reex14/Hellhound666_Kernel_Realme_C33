@@ -1,0 +1,196 @@
+make[1]: Entering directory '/workspaces/Reex/kernel/out'
+  GEN     Makefile
+-- Baseband-guard: CONFIG_BBG enabled, now checking...
+-- Kernel Version: 5.4
+-- Baseband_guard: Found DEFINE_LSM,now checking CONFIG_LSM...
+-- CONFIG_LSM value: "lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,baseband_guard"
+-- Baseband-guard: Okay, Baseband_guard was found in CONFIG_LSM
+-- BBG was enabled!
+-- BBG version: efac3115
+-- BBG repo: https://github.com/vc-teahouse/Baseband-guard
+  DTC     arch/arm64/boot/dts/nicky/ums9230.dtb
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230.dtb
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-evb.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-evb.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-t0-1.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-t0-1.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-evt1.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-evt1.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-evt2.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-evt2.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-dvt.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-dvt.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-pvt.dtbo
+  DTC     arch/arm64/boot/dts/nicky-A/ums9230-nicky-A-overlay-pvt.dtbo
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-mp-0.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230.dtb
+  DTC     arch/arm64/boot/dts/nicky/ums9230-nicky-overlay-mp-1.dtbo
+  DTC     arch/arm64/boot/dts/nico-go/ums9230.dtb
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-evb.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-t0-1.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-t0-2.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-evt1.dtbo
+  DTC     arch/arm64/boot/dts/nico-go/ums9230-nico_go-overlay.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-dvt.dtbo
+  DTC     arch/arm64/boot/dts/nico/ums9230-nico-overlay-pvt.dtbo
+  CALL    ../scripts/atomic/check-atomics.sh
+  CALL    ../scripts/checksyscalls.sh
+-- ReSukiSU version code: 34924
+-- ReSukiSU version name: v4.1.0-933abca5-dirty@ReSukiSU
+-- Supported Unofficial Manager: MKSU, RKSU, KOWSU, SukiSU-Ultra, ReSukiSU 
+-- KERNEL_VERSION: 5.4
+-- KERNEL_TYPE: GKI 1.0
+-- ReSukiSU: using SuSFS Inline hook
+-- ReSukiSU/susfs_inline: ksu_handle_setresuid found
+-- ReSukiSU/susfs_inline: ksu_handle_execveat found
+-- ReSukiSU/susfs_inline: ksu_handle_faccessat found
+-- ReSukiSU/susfs_inline: ksu_handle_sys_read found
+-- ReSukiSU/susfs_inline: ksu_handle_stat found
+-- ReSukiSU/susfs_inline: ksu_handle_sys_reboot found
+-- ReSukiSU/susfs_inline: ksu_handle_input_handle_event found
+
+-- SUSFS_VERSION: v2.1.0
+-- KPM is disabled
+-- ReSukiSU/compat: current_sid found
+-- ReSukiSU/compat: selinux_state found
+-- ReSukiSU/compat: kernel_read found
+-- ReSukiSU/compat: kernel_write found
+-- ReSukiSU/compat: path_umount found
+-- ReSukiSU/compat: selinux_inode found
+-- ReSukiSU/compat: selinux_cred found  CHK     include/generated/compile.h
+
+-- ReSukiSU/compat: seccomp_filter_count found
+-- ReSukiSU/compat: put_seccomp_filter found
+-- ReSukiSU/compat: security_inode_init_security_anon found
+-- ReSukiSU/compat: anon_inode_getfd_secure found
+-- ReSukiSU/compat: file_inode() found
+-- ReSukiSU/compat: ns_get_path found
+-- ReSukiSU/compat: modern dentry_open found
+-- ReSukiSU/compat: ext4_unregister_sysfs found
+-- ReSukiSU/compat: f_op->read_iter found
+-- ReSukiSU/compat: iterate_dir found
+-- ReSukiSU/compat: modern static_key_interface found
+-- ReSukiSU/compat: d_inode found
+-- ReSukiSU/compat: inode_lock found
+-- ReSukiSU/compat: modern errno file found
+-- ReSukiSU/compat: overflow.h found
+-- ReSukiSU/compat: modern proc ns header file found
+-- ReSukiSU/compat: android spec POLICYDB_CONFIG_ANDROID_NETLINK_ROUTE found!!
+-- ReSukiSU/compat: android spec POLICYDB_CONFIG_ANDROID_NETLINK_GETNEIGH found!!
+-- ReSukiSU/compat: found modern selinux policydb
+-- ReSukiSU/compat: found sidtab as reference
+-- ReSukiSU/compat: found hlist in security_hook_list
+-- ReSukiSU/compat: found new setprocattr prototype
+-- ReSukiSU/compat: found required provide lsm name
+  CHK     kernel/kheaders_data.tar.xz
+-- Baseband-guard: CONFIG_BBG enabled, now checking...
+-- Kernel Version: 5.4
+-- Baseband_guard: Found DEFINE_LSM,now checking CONFIG_LSM...
+-- CONFIG_LSM value: "lockdown,yama,loadpin,safesetid,integrity,selinux,smack,tomoyo,apparmor,baseband_guard"
+-- Baseband-guard: Okay, Baseband_guard was found in CONFIG_LSM
+-- BBG was enabled!
+-- BBG version: efac3115
+-- BBG repo: https://github.com/vc-teahouse/Baseband-guard
+BBG: Generating patch script security/selinux/bbg_patch.sh for selinuxfs.c...
+BBG: Preparing to patch '/workspaces/Reex/kernel/security/selinux/selinuxfs.c'...
+  -- Found existing backup. Restoring from '/workspaces/Reex/kernel/security/selinux/selinuxfs.c.orig' before patching.
+[DEBUG] Current Working Directory is:
+/workspaces/Reex/kernel/out
+BBG: Executing patch script on '/workspaces/Reex/kernel/security/selinux/selinuxfs.c'
+BBG: Patching of '/workspaces/Reex/kernel/security/selinux/selinuxfs.c' successful.
+BBG: Generating patch script security/selinux/bbg_patch_hooks.sh for hooks.c...
+BBG: Preparing to patch '/workspaces/Reex/kernel/security/selinux/hooks.c'...
+  -- Found existing backup. Restoring from '/workspaces/Reex/kernel/security/selinux/hooks.c.orig' before patching.
+[DEBUG] Current Working Directory is:
+/workspaces/Reex/kernel/out
+BBG: Executing patch script on '/workspaces/Reex/kernel/security/selinux/hooks.c'
+BBG: Patching of '/workspaces/Reex/kernel/security/selinux/hooks.c' successful.
+  CC      security/selinux/selinuxfs.o
+  CC      security/selinux/hooks.o
+  AR      security/selinux/built-in.a
+  AR      security/built-in.a
+-- ReSukiSU version code: 34924
+-- ReSukiSU version name: v4.1.0-933abca5-dirty@ReSukiSU
+-- Supported Unofficial Manager: MKSU, RKSU, KOWSU, SukiSU-Ultra, ReSukiSU 
+-- KERNEL_VERSION: 5.4
+-- KERNEL_TYPE: GKI 1.0
+-- ReSukiSU: using SuSFS Inline hook
+-- ReSukiSU/susfs_inline: ksu_handle_setresuid found
+-- ReSukiSU/susfs_inline: ksu_handle_execveat found
+-- ReSukiSU/susfs_inline: ksu_handle_faccessat found
+-- ReSukiSU/susfs_inline: ksu_handle_sys_read found
+-- ReSukiSU/susfs_inline: ksu_handle_stat found
+-- ReSukiSU/susfs_inline: ksu_handle_sys_reboot found
+-- ReSukiSU/susfs_inline: ksu_handle_input_handle_event found
+
+-- SUSFS_VERSION: v2.1.0
+-- KPM is disabled
+-- ReSukiSU/compat: current_sid found
+-- ReSukiSU/compat: selinux_state found
+-- ReSukiSU/compat: kernel_read found
+-- ReSukiSU/compat: kernel_write found
+-- ReSukiSU/compat: path_umount found
+-- ReSukiSU/compat: selinux_inode found
+-- ReSukiSU/compat: selinux_cred found
+-- ReSukiSU/compat: seccomp_filter_count found
+-- ReSukiSU/compat: put_seccomp_filter found
+-- ReSukiSU/compat: security_inode_init_security_anon found
+-- ReSukiSU/compat: anon_inode_getfd_secure found
+-- ReSukiSU/compat: file_inode() found
+-- ReSukiSU/compat: ns_get_path found
+-- ReSukiSU/compat: modern dentry_open found
+-- ReSukiSU/compat: ext4_unregister_sysfs found
+-- ReSukiSU/compat: f_op->read_iter found
+-- ReSukiSU/compat: iterate_dir found
+-- ReSukiSU/compat: modern static_key_interface found
+-- ReSukiSU/compat: d_inode found
+-- ReSukiSU/compat: inode_lock found
+-- ReSukiSU/compat: modern errno file found
+-- ReSukiSU/compat: overflow.h found
+-- ReSukiSU/compat: modern proc ns header file found
+-- ReSukiSU/compat: android spec POLICYDB_CONFIG_ANDROID_NETLINK_ROUTE found!!
+-- ReSukiSU/compat: android spec POLICYDB_CONFIG_ANDROID_NETLINK_GETNEIGH found!!
+-- ReSukiSU/compat: found modern selinux policydb
+-- ReSukiSU/compat: found sidtab as reference
+-- ReSukiSU/compat: found hlist in security_hook_list
+-- ReSukiSU/compat: found new setprocattr prototype
+-- ReSukiSU/compat: found required provide lsm name
+  CC      drivers/kernelsu/core/init.o
+  AR      drivers/kernelsu/built-in.a
+../drivers/unisoc_platform/sprd_gnss/Makefile:1: shell echo "sprd_gnss entry"
+../drivers/unisoc_platform/sprd_gnss/Makefile:5: shell echo "BUILD_SINGLE_GNSS_MODULE=false"
+../drivers/unisoc_platform/sprd_gnss/Makefile:6: shell echo "make a single ko for gnss:false"
+../drivers/unisoc_platform/sprd_gnss/Makefile:23: shell echo "sprd_gnss exit"
+../drivers/unisoc_platform/sprd_gnss/gnss_common_ctl/Makefile:1: shell echo "build gnss_common_ctl_all entry"
+../drivers/unisoc_platform/sprd_gnss/gnss_common_ctl/Makefile:5: shell echo "build gnss_common_ctl_all exit"
+../drivers/unisoc_platform/sprd_gnss/gnss_dbg/Makefile:1: shell echo "build gnss_dbg entry"
+../drivers/unisoc_platform/sprd_gnss/gnss_dbg/Makefile:3: shell echo "build gnss_dbg exit"
+../drivers/unisoc_platform/sprd_gnss/gnss_pmnotify_ctl/Makefile:1: shell echo "build gnss_pmnotify_ctl entry"
+../drivers/unisoc_platform/sprd_gnss/gnss_pmnotify_ctl/Makefile:3: shell echo "build gnss_pmnotify_ctl exit"
+  AR      drivers/built-in.a
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.a
+  LTO     vmlinux.o
+  MODPOST vmlinux.o
+  MODINFO modules.builtin.modinfo
+  LD      .tmp_vmlinux.kallsyms1
+  KSYM    .tmp_vmlinux.kallsyms1.o
+  LD      .tmp_vmlinux.kallsyms2
+  KSYM    .tmp_vmlinux.kallsyms2.o
+  LD      vmlinux
+  SORTEX  vmlinux
+  SYSMAP  System.map
+  Building modules, stage 2.
+  MODPOST 182 modules
+  OBJCOPY arch/arm64/boot/Image
+   text	   data	    bss	    dec	    hex	filename
+22110761	13244261	2924896	38279918	2481aee	vmlinux
+0x4c050822	module_layout	vmlinux	EXPORT_SYMBOL	
+   text	   data	    bss	    dec	    hex	filename
+22110761	13244261	2924896	38279918	2481aee	vmlinux
+0x4c050822	module_layout	vmlinux	EXPORT_SYMBOL	
+  GZIP    arch/arm64/boot/Image.gz
+make[1]: Leaving directory '/workspaces/Reex/kernel/out'

@@ -1913,7 +1913,7 @@ out_ret:
 	return retval;
 }
 
-#ifdef CONFIG_KSU
+#ifdef CONFIG_KSU_SUSFS
 #ifndef CONFIG_KSU_WITH_KPROBES
 extern int ksu_handle_execveat(int *fd, struct filename **filename_ptr, void *argv,
 			void *envp, int *flags);
@@ -1931,7 +1931,7 @@ static int do_execveat_common(int fd, struct filename *filename,
 			      struct user_arg_ptr envp,
 			      int flags)
 {
-#ifdef CONFIG_KSU
+#ifdef CONFIG_KSU_SUSFS
 #ifndef CONFIG_KSU_WITH_KPROBES
 	ksu_handle_execveat(&fd, &filename, &argv, &envp, &flags);
 #endif
