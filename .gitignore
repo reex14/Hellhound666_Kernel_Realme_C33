@@ -152,3 +152,4 @@ LD=ld
 build/configs/*.bak
 out/
 Image
+build/
