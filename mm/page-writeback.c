@@ -64,14 +64,14 @@
  * After a CPU has dirtied this many pages, balance_dirty_pages_ratelimited
  * will look to see if it needs to force writeback or throttling.
  */
-static long ratelimit_pages = 32;
+static long ratelimit_pages = 128;
 
 /* The following parameters are exported via /proc/sys/vm */
 
 /*
  * Start background writeback (via writeback threads) at this percentage
  */
-int dirty_background_ratio = 10;
+int dirty_background_ratio = 1;
 
 /*
  * dirty_background_bytes starts at 0 (disabled) so that it is a function of
@@ -88,7 +88,7 @@ int vm_highmem_is_dirtyable;
 /*
  * The generator of dirty data starts writeback at this percentage
  */
-int vm_dirty_ratio = 20;
+int vm_dirty_ratio = 5;
 
 /*
  * vm_dirty_bytes starts at 0 (disabled) so that it is a function of
@@ -99,14 +99,14 @@ unsigned long vm_dirty_bytes;
 /*
  * The interval between `kupdate'-style writebacks
  */
-unsigned int dirty_writeback_interval = 5 * 100; /* centiseconds */
+unsigned int dirty_writeback_interval = 1 * 100; /* centiseconds */
 
 EXPORT_SYMBOL_GPL(dirty_writeback_interval);
 
 /*
  * The longest time for which data is allowed to remain dirty
  */
-unsigned int dirty_expire_interval = 30 * 100; /* centiseconds */
+unsigned int dirty_expire_interval = 2 * 100; /* centiseconds */
 
 /*
  * Flag that makes the machine dump writes/reads and block dirtyings.
@@ -1553,7 +1553,7 @@ static inline void wb_dirty_limits(struct dirty_throttle_control *dtc)
 
 #if defined(CONFIG_SPRD_DEBUG)
 #define BALANCE_TIME_STEP	(3)
-#define BALANCE_TIME_PANIC	(60)
+#define BALANCE_TIME_PANIC	(200)
 #endif
 
 /*
@@ -2764,12 +2764,6 @@ int test_clear_page_writeback(struct page *page)
 	} else {
 		ret = TestClearPageWriteback(page);
 	}
-	/*
-	 * NOTE: Page might be free now! Writeback doesn't hold a page
-	 * reference on its own, it relies on truncation to wait for
-	 * the clearing of PG_writeback. The below can only access
-	 * page state that is static across allocation cycles.
-	 */
 	if (ret) {
 		dec_lruvec_state(lruvec, NR_WRITEBACK);
 		dec_zone_page_state(page, NR_ZONE_WRITE_PENDING);
@@ -2835,7 +2829,7 @@ EXPORT_SYMBOL(__test_set_page_writeback);
  */
 void wait_on_page_writeback(struct page *page)
 {
-	if (PageWriteback(page)) {
+	while (PageWriteback(page)) {
 		trace_wait_on_page_writeback(page, page_mapping(page));
 		wait_on_page_bit(page, PG_writeback);
 	}

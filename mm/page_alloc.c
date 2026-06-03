@@ -88,6 +88,7 @@
 #ifdef CONFIG_HYBRIDSWAP
 #include <trace/hooks/vh_vmscan.h>
 #endif
+
 /* prevent >1 _updater_ of zone percpu pageset ->high and ->batch fields */
 static DEFINE_MUTEX(pcp_batch_high_lock);
 #define MIN_PERCPU_PAGELIST_FRACTION	(8)
@@ -344,7 +345,7 @@ compound_page_dtor * const compound_page_dtors[] = {
  * tuned according to the amount of memory in the system.
  */
 int min_free_kbytes = 1024;
-int user_min_free_kbytes = -1;
+int user_min_free_kbytes = 98304;
 #ifdef CONFIG_DISCONTIGMEM
 /*
  * DiscontigMem defines memory ranges as separate pg_data_t even if the ranges
@@ -366,7 +367,7 @@ int watermark_scale_factor = 10;
  * free memory, to make space for new workloads. Anyone can allocate
  * down to the min watermarks controlled by min_free_kbytes above.
  */
-int extra_free_kbytes = 0;
+int extra_free_kbytes = 32768;
 
 static unsigned long nr_kernel_pages __initdata;
 static unsigned long nr_all_pages __initdata;
@@ -3418,6 +3419,10 @@ struct page *rmqueue(struct zone *preferred_zone,
 
 	__count_zid_vm_events(PGALLOC, page_zonenum(page), 1 << order);
 	zone_statistics(preferred_zone, zone);
+#ifdef CONFIG_HYBRIDSWAP
+	trace_android_vh_rmqueue(preferred_zone, zone, order,
+			gfp_flags, alloc_flags, migratetype);
+#endif
 	local_irq_restore(flags);
 
 out:
@@ -4838,6 +4843,15 @@ fail:
 	warn_alloc(gfp_mask, ac->nodemask,
 			"page allocation failure: order:%u", order);
 got_pg:
+#ifdef OPLUS_FEATURE_HEALTHINFO
+/* Huacai.Zhou@PSW.BSP.Kernel.MM, 2018-07-07, add alloc wait monitor support*/
+#if (defined CONFIG_OPLUS_MEM_MONITOR) && (defined CONFIG_OPLUS_HEALTHINFO)
+	memory_alloc_monitor(gfp_mask, order, jiffies_to_msecs(jiffies - alloc_start));
+#endif
+#endif /* OPLUS_FEATURE_HEALTHINFO */
+#ifdef CONFIG_HYBRIDSWAP
+	trace_android_vh_alloc_pages_slowpath(gfp_mask, order, 0);
+#endif
 	return page;
 }
 
@@ -8123,7 +8137,7 @@ int min_free_kbytes_sysctl_handler(struct ctl_table *table, int write,
 		return rc;
 
 	if (write) {
-		user_min_free_kbytes = min_free_kbytes;
+		min_free_kbytes = user_min_free_kbytes;
 		setup_per_zone_wmarks();
 	}
 	return 0;

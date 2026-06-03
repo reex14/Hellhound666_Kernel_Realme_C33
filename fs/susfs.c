@@ -1426,8 +1426,17 @@ void susfs_start_sdcard_monitor_fn(void) {
 	}
 }
 
+static void susfs_extra_works_fn(struct work_struct *work)
+{
+	/* placeholder for susfs extra works after umount */
+}
+
+struct work_struct susfs_extra_works;
+EXPORT_SYMBOL(susfs_extra_works);
+
 /* susfs_init */
 void susfs_init(void) {
+	INIT_WORK(&susfs_extra_works, susfs_extra_works_fn);
 	SUSFS_LOGI("susfs is initialized! version: " SUSFS_VERSION " \n");
 }
 
@@ -1435,5 +1444,4 @@ void susfs_init(void) {
 //void __init susfs_exit(void)
 
 
-struct work_struct susfs_extra_works;
-EXPORT_SYMBOL(susfs_extra_works);
+
